@@ -40,7 +40,7 @@
     },
   };
 
-  const settings = {
+  const settings = { // eslint-disable-line no-unused-vars
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
@@ -64,10 +64,8 @@
     },
 
     init: function() {
-      const thisApp = this;
-
-      thisApp.initData();
-      thisApp.initMenu();
+      this.initData();
+      this.initMenu();
     },
   };
 
@@ -77,13 +75,33 @@
       this.data = data;
 
       this.renderInMenu();
-      console.log('new Product:', this);
+      this.initAccordion(this);
     }
 
     renderInMenu() {
       this.element = utils.createDOMFromHTML(templates.menuProduct(this.data));
       const menuContainer = document.querySelector(select.containerOf.menu);
       menuContainer.appendChild(this.element);
+    }
+
+    initAccordion(thisProduct) {
+      const clickableTrigger = this.element.querySelector(select.menuProduct.clickable);
+
+      clickableTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const allActiveProducts = document.querySelectorAll(select.all.menuProductsActive);
+
+        if(allActiveProducts.length > 0) {
+          for(let activeProduct of allActiveProducts) {
+            if(activeProduct !== thisProduct.element) {
+              activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
+            }
+          }
+        }
+
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
+      });
     }
   }
 
