@@ -53,15 +53,39 @@
   };
 
   const app = {
-    init: function(){
+    initMenu: function() {
+      for(let productData in this.data.products) {
+        new Product(productData, this.data.products[productData]);
+      }
+    },
+
+    initData: function() {
+      this.data = dataSource;
+    },
+
+    init: function() {
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+
+      thisApp.initData();
+      thisApp.initMenu();
     },
   };
+
+  class Product {
+    constructor(id, data) {
+      this.id = id;
+      this.data = data;
+
+      this.renderInMenu();
+      console.log('new Product:', this);
+    }
+
+    renderInMenu() {
+      this.element = utils.createDOMFromHTML(templates.menuProduct(this.data));
+      const menuContainer = document.querySelector(select.containerOf.menu);
+      menuContainer.appendChild(this.element);
+    }
+  }
 
   app.init();
 }
