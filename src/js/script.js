@@ -75,7 +75,18 @@
       this.data = data;
 
       this.renderInMenu();
+      this.getElements();
       this.initAccordion(this);
+      this.initOrderForm();
+      this.processOrder();
+    }
+
+    getElements() {
+      this.accordionTrigger = this.element.querySelector(select.menuProduct.clickable);
+      this.form = this.element.querySelector(select.menuProduct.form);
+      this.formInputs = this.form.querySelectorAll(select.all.formInputs);
+      this.cartButton = this.element.querySelector(select.menuProduct.cartButton);
+      this.priceElem = this.element.querySelector(select.menuProduct.priceElem);
     }
 
     renderInMenu() {
@@ -85,9 +96,7 @@
     }
 
     initAccordion(thisProduct) {
-      const clickableTrigger = this.element.querySelector(select.menuProduct.clickable);
-
-      clickableTrigger.addEventListener('click', function(event) {
+      this.accordionTrigger.addEventListener('click', function(event) {
         event.preventDefault();
 
         const allActiveProducts = document.querySelectorAll(select.all.menuProductsActive);
@@ -102,6 +111,54 @@
 
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
+    }
+
+    initOrderForm() {
+      const thisProduct = this;
+
+      this.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        this.processOrder();
+      });
+
+      for(let input of this.formInputs){
+        input.addEventListener('change', function(){
+          thisProduct.processOrder();
+        });
+      }
+
+      this.cartButton.addEventListener('click', function(event){
+        event.preventDefault();
+        this.processOrder();
+      });
+    }
+
+    processOrder() {
+      const thisProduct = this;
+      const formData = utils.serializeFormToObject(thisProduct.form);
+
+      let price = thisProduct.data.price;
+
+
+      for (let paramId in thisProduct.data.params){
+        const param = thisProduct.data.params[paramId];
+
+        for(let optionId in param.options) {
+          const option = param.options[optionId];
+
+          if(formData[paramId] && formData[paramId].includes(optionId)) {
+            if(!option.default) {
+              price += option.price;
+            }
+          } else {
+            if(option.default) {
+              price -= option.price;
+            }
+          }
+        }
+      }
+
+      thisProduct.priceElem.innerHTML = price;
     }
   }
 
