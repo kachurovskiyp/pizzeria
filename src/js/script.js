@@ -78,6 +78,29 @@
     cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   };
 
+  class Cart {
+    constructor(element) {
+      this.products = [];
+      this.getElements(element);
+      this.initActions();
+
+      console.log('new Cart: ', this);
+    }
+
+    getElements(element) {
+      this.dom = {};
+
+      this.dom.wrapper = element;
+      this.dom.toggleTrigger = this.dom.wrapper.querySelector(select.cart.toggleTrigger);
+    }
+
+    initActions() {
+      this.dom.toggleTrigger.addEventListener('click', () => {
+        this.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+      });
+    }
+  }
+
   const app = {
     initMenu: function() {
       for(let productData in this.data.products) {
@@ -89,9 +112,14 @@
       this.data = dataSource;
     },
 
+    initCart: function() {
+      this.cart = new Cart(document.querySelector(select.containerOf.cart));
+    },
+
     init: function() {
       this.initData();
       this.initMenu();
+      this.initCart();
     },
   };
 
