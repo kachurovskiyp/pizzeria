@@ -255,6 +255,38 @@
         }
      }
   ],
-  "orders": {}
-
+  "orders": {},
+  "booking": [
+   {
+      "id": 1,
+      "date": "2023-04-30",
+      "hour": "12:00",
+      "table": 1,
+      "duration": 3,
+      "ppl": 4,
+      "starters": ["water"]
+   }
+  ],
+  "event": [
+   {
+      "id": 1,
+      "date": "2023-04-30",
+      "hour": "15:30",
+      "table": 2,
+      "repeat": false,
+      "duration": 3,
+      "ppl": 2,
+      "starters": []
+   },
+   {
+      "id": 2,
+      "date": "2023-04-30",
+      "hour": "12:00",
+      "table": 3,
+      "repeat": "daily",
+      "duration": 2,
+      "ppl": 2,
+      "starters": []
+   }
+  ]
 }
