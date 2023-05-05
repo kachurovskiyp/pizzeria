@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="./vendor/range-slider.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <script src="https://kit.fontawesome.com/198b882f6d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,6 +26,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -65,6 +68,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -169,7 +175,6 @@
 
   <script id="template-menu-product" type="text/x-handlebars-template">
       <article class="product"> <!-- product -->
-
           <header class="product__header">
             <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
             <p class="product__base-price no-spacing">${{ price }}</p>
@@ -246,9 +251,98 @@
       </article> <!-- .product -->
     </script>
 
+    <script id="template-home-page" type="text/x-handlebars-template">
+      <div class="container">
+        <section class="home__sub-menu">
+          <a href="#order" class="home__order">
+            <h2 class="home__sub-title">order online</h2>
+            <p class="home__sub-desc">Delicious food delivered to you door</p>
+          </a>
+          <a href="#booking" class="home__booking">
+            <h2 class="home__sub-title">book a table</h2>
+            <p class="home__sub-desc">Booking a table for you & your friends</p>
+          </a>
+          <div class="home__hours">
+            <h2 class="home__sub-title">opening hours:</h2>
+            <p>thu-sun, 12pm - 12am</p>
+          </div>
+        </section>
+
+        <section class="reviews">
+          <article class="reviews__item">
+            <img src="./images/pizza-3.jpg" alt="client foto">
+            <div class="reviews__description">
+              <h2>amazing service!</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+              <span>Margaret Osborne</span>
+            </div>
+          </article>
+
+          <article class="reviews__item">
+            <img src="./images/pizza-3.jpg" alt="client foto">
+            <div class="reviews__description">
+              <h2>amazing service!</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+              <span>Margaret Osborne</span>
+            </div>
+          </article>
+
+          <article class="reviews__item">
+            <img src="./images/pizza-3.jpg" alt="client foto">
+            <div class="reviews__description">
+              <h2>amazing service!</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.</p>
+              <span>Margaret Osborne</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="gallery">
+          <article class="gallery__item">
+            <img src="./images/pizza-4.jpg" alt="galery image">
+            <i class="galery__icon-like fa-solid fa-heart fa-xl"></i>
+            <i class="galery__icon-share fa-solid fa-share-nodes fa-xl"></i>
+          </article>
+
+          <article class="gallery__item">
+            <img src="./images/pizza-5.jpg" alt="galery image">
+            <i class="galery__icon-like fa-solid fa-heart fa-xl"></i>
+            <i class="galery__icon-share fa-solid fa-share-nodes fa-xl"></i>
+          </article>
+
+          <article class="gallery__item">
+            <img src="./images/pizza-6.jpg" alt="galery image">
+            <i class="galery__icon-like fa-solid fa-heart fa-xl"></i>
+            <i class="galery__icon-share fa-solid fa-share-nodes fa-xl"></i>
+          </article>
+
+          <article class="gallery__item">
+            <img src="./images/pizza-7.jpg" alt="galery image">
+            <i class="galery__icon-like fa-solid fa-heart fa-xl"></i>
+            <i class="galery__icon-share fa-solid fa-share-nodes fa-xl"></i>
+          </article>
+
+          <article class="gallery__item">
+            <img src="./images/pizza-8.jpg" alt="galery image">
+            <i class="galery__icon-like fa-solid fa-heart fa-xl"></i>
+            <i class="galery__icon-share fa-solid fa-share-nodes fa-xl"></i>
+          </article>
+
+          <article class="gallery__item">
+            <img src="./images/pizza-9.jpg" alt="galery image">
+            <i class="galery__icon-like fa-solid fa-heart fa-xl"></i>
+            <i class="galery__icon-share fa-solid fa-share-nodes fa-xl"></i>
+          </article>
+
+          <p class="gallery__link"><a href="#">View more on Instagram</a></p>
+        </section>
+      </div>
+    </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="./vendor/range-slider.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 

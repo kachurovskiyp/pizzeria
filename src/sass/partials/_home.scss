@@ -1,0 +1,194 @@
+@keyframes margin {
+  from {
+    margin-top: 45px;
+  }
+
+  to {
+    margin-top: 15px;
+  }
+}
+
+@keyframes margin-desc {
+  from {
+    margin-top: 40px;
+  }
+
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes brightness {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter: brightness(0.4);
+  }
+}
+
+.home__sub-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  padding-top: 70px;
+  color: $color-light;
+}
+
+.home__booking,
+.home__order {
+  width: 49%;
+  height: 120px;
+  overflow: hidden;
+
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+
+  background: url(../../images/pizza-1.jpg) no-repeat center center;
+  background-size: 100%;
+
+  .home__sub-title {
+    margin-top: 45px;
+  }
+
+  .home__sub-desc {
+    margin-top: 40px;
+    text-transform: none;
+  }
+
+  &:hover {
+    .home__sub-title {
+      margin-top: 15px;
+      animation-name: margin;
+      animation-duration: 0.7s;
+    }
+
+    .home__sub-desc {
+      margin-top: 0;
+      animation-name: margin-desc;
+      animation-duration: 0.7s;
+    }
+  }
+}
+
+.home__booking {
+  background-image: url(../../images/pizza-2.jpg);
+}
+
+.home__hours {
+  flex-grow: 1;
+  margin-top: 10px;
+
+  width: 100%;
+  height: 120px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  background-color: $color-main;
+}
+
+// reviews
+
+.reviews {
+  margin-top: 100px;
+}
+
+.reviews__item {
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 35%;
+    height: 110%;
+    margin-right: 40px;
+    border-radius: 10px;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+
+  span {
+    padding-left: 10px;
+    position: relative;
+
+    &::after {
+      content: '-';
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+// galery
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+
+.gallery__item {
+  width: 32%;
+  max-height: 142px;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  i {
+    display: none;
+    position: absolute;
+    top: 50%;
+    color: $color-light;
+  }
+
+  .galery__icon-like {
+    left: 35%;
+
+    &:hover {
+      color: $color-main;
+    }
+  }
+
+  .galery__icon-share {
+    right: 35%;
+
+    &:hover {
+      color: $color-success;
+    }
+  }
+
+  &:hover {
+    img {
+      filter: brightness(0.4);
+      animation-name: brightness;
+      animation-duration: 0.7s;
+    }
+
+    i {
+      display: block;
+    }
+  }
+}
+
+.gallery__link {
+  flex-grow: 1;
+
+  a {
+    color: $color-main;
+  }
+}
